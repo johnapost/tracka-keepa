@@ -1,0 +1,16 @@
+{
+  "name": "Tracka Keepa",
+  "version": "0.1",
+  "description": "Tracka Keepa",
+  "main": "src/canvas/app.coffee",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnapost/tracka-keepa.git"
+  },
+  "author": "John Apostol <notimetobeidle@gmail.com>",
+  "license": "DO NOT COPY",
+  "bugs": {
+    "url": "https://github.com/johnapost/tracka-keepa/issues"
+  },
+  "homepage": "https://github.com/johnapost/tracka-keepa",
+}
