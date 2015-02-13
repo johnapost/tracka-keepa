@@ -1,0 +1,22 @@
+{
+  "name": "tracka-keepa",
+  "version": "0.1.0",
+  "authors": [
+    "John Apostol <notimetobeidle@gmail.com>"
+  ],
+  "description": "Tracka Keepa",
+  "main": "src/scripts/app.coffee",
+  "moduleType": [
+    "node"
+  ],
+  "license": "DO NOT COPY",
+  "homepage": "https://github.com/johnapost/tracka-keepa",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

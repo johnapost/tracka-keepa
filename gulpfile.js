@@ -57,6 +57,15 @@ gulp.task('jade', function() {
     .pipe(gulp.dest('dist'))
 })
 
+gulp.task('vendor', function() {
+  return gulp.src([
+    'bower_components/angular/angular.min.js',
+    'bower_components/angular/angular.min.js.map',
+  ])
+    .pipe(changed('dist/scripts'))
+    .pipe(gulp.dest('dist/scripts'))
+})
+
 gulp.task('reload', ['jade', 'coffee', 'sass'], function() {
   livereload.changed();
   console.log('LiveReload triggered.')
