@@ -28,7 +28,7 @@ gulp.task('sass', function() {
       .pipe(sass({style: 'expanded'}))
       .on('error', errorHandler)
       .pipe(prefix('last 5 versions', '> 1%'))
-      .pipe(minifycss)
+      .pipe(minifycss())
     .pipe(sourcemaps.write())
     .pipe(rename('app.css'))
     .pipe(chmod(755))
