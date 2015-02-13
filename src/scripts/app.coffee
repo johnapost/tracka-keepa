@@ -1,5 +1,5 @@
 # Create angular app
-app = angular.module 'ebApp', ['ngTouch', 'offClick']
+app = angular.module 'trackaKeepa', ['firebase']
 
 # Make Modernizr injectable
 app.constant 'Modernizr', Modernizr
