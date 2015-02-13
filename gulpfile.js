@@ -64,6 +64,8 @@ gulp.task('vendor', function() {
     'bower_components/jquery/dist/jquery.min.map',
     'bower_components/angular/angular.min.js',
     'bower_components/angular/angular.min.js.map',
+    'bower_components/firebase/firebase.js',
+    'bower_components/angularfire/dist/angularfire.min.js'
   ])
     .pipe(changed('dist/scripts'))
     .pipe(gulp.dest('dist/scripts'))
