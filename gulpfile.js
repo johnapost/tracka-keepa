@@ -45,7 +45,7 @@ gulp.task('coffee', function() {
     .pipe(sourcemaps.write())
     .pipe(rename('app.js'))
     .pipe(chmod(755))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/scripts'))
 })
 
 gulp.task('jade', function() {
@@ -59,6 +59,9 @@ gulp.task('jade', function() {
 
 gulp.task('vendor', function() {
   return gulp.src([
+    'bower_components/modernizr/modernizr.js',
+    'bower_components/jquery/dist/jquery.min.js',
+    'bower_components/jquery/dist/jquery.min.map',
     'bower_components/angular/angular.min.js',
     'bower_components/angular/angular.min.js.map',
   ])
@@ -92,6 +95,7 @@ gulp.task('default', [
   'jade',
   'sass',
   'coffee',
+  'vendor',
   'express',
   'watch',
 ])
