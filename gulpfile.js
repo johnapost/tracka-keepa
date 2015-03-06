@@ -15,6 +15,8 @@ var gulp = require('gulp'),
   livereload = require('gulp-livereload'),
   chmod = require('gulp-chmod'),
   changed = require('gulp-changed'),
+  cucumber = require('cucumber')
+  protractor = require('gulp-protractor').protractor,
   app = express()
 
 gulp.task('del', function() {
@@ -81,11 +83,19 @@ gulp.task('express', function() {
   app.listen(4000);
 })
 
+gulp.task('protractor', function() {
+  return gulp.src('features/*.coffee')
+    .pipe(protractor({
+      configFile: 'test.js',
+    }))
+    .on('error', errorHandler)
+})
+
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('src/**/*.coffee', ['coffee', 'reload'])
-  gulp.watch('src/**/*.scss', ['sass', 'reload'])
-  gulp.watch('src/**/*.jade', ['jade', 'reload'])
+  gulp.watch('src/**/*.coffee', ['coffee', 'reload', 'protractor'])
+  gulp.watch('src/**/*.scss', ['sass', 'reload', 'protractor'])
+  gulp.watch('src/**/*.jade', ['jade', 'reload', 'protractor'])
 })
 
 function errorHandler(err) {
@@ -99,5 +109,6 @@ gulp.task('default', [
   'coffee',
   'vendor',
   'express',
+  'protractor',
   'watch',
 ])
