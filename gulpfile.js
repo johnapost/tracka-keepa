@@ -96,6 +96,7 @@ gulp.task('watch', function() {
   gulp.watch('src/**/*.coffee', ['coffee', 'reload', 'protractor'])
   gulp.watch('src/**/*.scss', ['sass', 'reload', 'protractor'])
   gulp.watch('src/**/*.jade', ['jade', 'reload', 'protractor'])
+  gulp.watch(['features/**/*.feature', 'features/**/*.coffee'], ['protractor'])
 })
 
 function errorHandler(err) {

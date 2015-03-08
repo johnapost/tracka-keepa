@@ -4,12 +4,20 @@ module.exports = ->
   chaiAsPromised = require 'chai-as-promised'
   chai.use chaiAsPromised
   expect = chai.expect
+  require('hide-stack-frames-from') 'cucumber'
 
-  this.When 'I visit the homepage', (callback) ->
+  @When 'I visit the homepage', (callback) ->
     browser.get '/'
     callback()
 
-  this.Then 'I should see the page title', (callback) ->
-    browser.getTitle().then (title) ->
-      expect(title).to.equal 'Tracka Keepa'
-      callback()
+  @When 'I login to my account with valid credentials', (callback) ->
+    callback.pending()
+
+  @When 'I login to my account with invalid credentials', (callback) ->
+    callback.pending()
+
+  @Then 'I should see my dashboard', (callback) ->
+    callback.pending()
+
+  @Then 'I should see an error message', (callback) ->
+    callback.pending()

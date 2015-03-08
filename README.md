@@ -2,7 +2,7 @@
 
 ### What is Tracka Keepa ###
 
-Tracka Keepa is a time keeping web application. Specific features will a task interruption tracker, physical button integration and anything else that comes to mind. I expect the project will develop a personality as development progresses.
+Tracka Keepa is a time keeping web application. Specific features will include a task interruption tracker, physical button integration and anything else that comes to mind. I expect the project will develop a personality as development progresses.
 
 ## Tests ##
 
