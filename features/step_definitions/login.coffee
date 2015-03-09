@@ -11,13 +11,25 @@ module.exports = ->
     callback()
 
   @When 'I login to my account with valid credentials', (callback) ->
-    callback.pending()
+    element By.css('.email').sendkeys('testemail@testemail.com')
+    element By.css('.password').sendkeys('testpassword')
+    element By.css('.submit').click()
+    callback()
 
   @When 'I login to my account with invalid credentials', (callback) ->
+    element By.css('.email').sendkeys('testemail@testemail.com')
+    element By.css('.password').sendkeys('badpassword')
+    element By.css('.submit').click()
     callback.pending()
 
   @Then 'I should see my dashboard', (callback) ->
-    callback.pending()
+    if element By.css('.dashboard')
+      callback()
+    else
+      callback.fail()
 
   @Then 'I should see an error message', (callback) ->
-    callback.pending()
+    if element By.css('.error')
+      callback()
+    else
+      callback.fail()
