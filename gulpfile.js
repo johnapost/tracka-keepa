@@ -73,8 +73,8 @@ gulp.task('vendor', function() {
     .pipe(gulp.dest('dist/scripts'))
 })
 
-gulp.task('reload', ['jade', 'coffee', 'sass'], function() {
-  livereload.changed();
+gulp.task('reload', ['jade', 'coffee', 'sass', 'protractor'], function() {
+  livereload.changed('');
   console.log('LiveReload triggered.')
 })
 
