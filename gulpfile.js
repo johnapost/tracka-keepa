@@ -34,16 +34,16 @@ gulp.task('sass', function() {
     .pipe(sourcemaps.write())
     .pipe(rename('app.css'))
     .pipe(chmod(755))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/styles'))
 })
 
 gulp.task('coffee', function() {
   return gulp.src('src/scripts/**/*.coffee')
-    .pipe(changed('dist/scripts'))
     .pipe(sourcemaps.init())
       .pipe(coffee({bare: true}))
       .on('error', errorHandler)
       .pipe(concat('app.coffee'))
+      .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(rename('app.js'))
     .pipe(chmod(755))
@@ -60,17 +60,26 @@ gulp.task('jade', function() {
 })
 
 gulp.task('vendor', function() {
-  return gulp.src([
+  var js = gulp.src([
     'bower_components/modernizr/modernizr.js',
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/jquery/dist/jquery.min.map',
+    'bower_components/bootswatch-dist/js/bootstrap.min.js',
     'bower_components/angular/angular.min.js',
     'bower_components/angular/angular.min.js.map',
     'bower_components/firebase/firebase.js',
     'bower_components/angularfire/dist/angularfire.min.js'
   ])
-    .pipe(changed('dist/scripts'))
-    .pipe(gulp.dest('dist/scripts'))
+  .pipe(changed('dist/scripts'))
+  .pipe(gulp.dest('dist/scripts'))
+
+  var css = gulp.src([
+    'bower_components/bootswatch-dist/css/bootstrap.min.css'
+  ])
+  .pipe(changed('dist/styles'))
+  .pipe(gulp.dest('dist/styles'))
+
+  return merge(js, css)
 })
 
 gulp.task('reload', ['jade', 'coffee', 'sass', 'protractor'], function() {
@@ -111,5 +120,5 @@ gulp.task('default', [
   'vendor',
   'express',
   'protractor',
-  'watch',
+  'watch'
 ])
