@@ -11,6 +11,9 @@ module.exports = ->
     .then -> expect(browser.getTitle()).to.eventually.equal 'Tracka Keepa'
     .then -> callback()
 
+  @When 'I register for an account', (callback) ->
+    callback.pending()
+
   @When 'I login to my account with valid credentials', (callback) ->
     email.sendKeys 'testemail@testemail.com'
     .then -> password.sendKeys 'testpassword'
@@ -18,12 +21,14 @@ module.exports = ->
     .then -> submit.click()
     .then -> callback()
 
-
   @When 'I login to my account with invalid credentials', (callback) ->
     email.sendKeys 'testemail@testemail.com'
     .then -> password.sendKeys 'badpassword'
     .then -> submit.click()
     .then -> callback()
+
+  @Then 'I should have my account created', (callback) ->
+    callback.pending()
 
   @Then 'I should see my dashboard', (callback) ->
     expect element(By.css('.dashboard').getText()).to.eventually.equal 'Dashboard'
