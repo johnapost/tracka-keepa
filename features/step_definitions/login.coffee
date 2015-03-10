@@ -1,44 +1,34 @@
 module.exports = ->
-  # Refactor this out to a support file
-  chai = require 'chai'
-  chaiAsPromised = require 'chai-as-promised'
-  chai.use chaiAsPromised
-  expect = chai.expect
-  require('hide-stack-frames-from') 'cucumber'
+  support = require '../support/support.coffee'
+  expect = support().expect
 
-  # Elements
   email = element By.css('#email')
   password = element By.css('#password')
   submit = element By.css('#submit')
 
   @When 'I visit the homepage', (callback) ->
     browser.get '/'
-    callback()
+    .then -> expect(browser.getTitle()).to.eventually.equal 'Tracka Keepa'
+    .then -> callback()
 
   @When 'I login to my account with valid credentials', (callback) ->
     email.sendKeys 'testemail@testemail.com'
-    password.sendKeys 'testpassword'
-    submit.click()
+    .then -> password.sendKeys 'testpassword'
+    .then -> expect(email.getAttribute('value')).to.eventually.equal 'testemail@testemail.com'
+    .then -> submit.click()
+    .then -> callback()
 
-    if email.getText() is 'testemail@testemail.com'
-      callback()
-    else
-      callback.fail()
 
   @When 'I login to my account with invalid credentials', (callback) ->
-    element(By.css('#email')).sendKeys 'testemail@testemail.com'
-    password.sendKeys 'badpassword'
-    submit.click()
-    callback()
+    email.sendKeys 'testemail@testemail.com'
+    .then -> password.sendKeys 'badpassword'
+    .then -> submit.click()
+    .then -> callback()
 
   @Then 'I should see my dashboard', (callback) ->
-    if element By.css('.dashboard')
-      callback()
-    else
-      callback.fail()
+    expect element(By.css('.dashboard').getText()).to.eventually.equal 'Dashboard'
+    .then -> callback()
 
   @Then 'I should see an error message', (callback) ->
-    if element By.css('.error')
-      callback()
-    else
-      callback.fail()
+    expect element(By.css('.error').getText()).to.eventually.equal 'Error'
+    .then -> callback()
