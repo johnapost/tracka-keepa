@@ -53,7 +53,7 @@ gulp.task('coffee', function() {
 gulp.task('jade', function() {
   return gulp.src('src/views/**/*.jade')
     .pipe(changed('dist'))
-    .pipe(jade({pretty: true}))
+    .pipe(jade())
     .on('error', errorHandler)
     .pipe(chmod(755))
     .pipe(gulp.dest('dist'))
