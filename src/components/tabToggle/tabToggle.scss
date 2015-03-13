@@ -1,9 +1,4 @@
-[tab-toggle] {
-  &:hover, &:active, &:focus {
-    outline: 0;
-  }
-}
-
+// Functional
 [tab-content] {
   display: none;
   &[tab-active] {
@@ -14,5 +9,12 @@
   }
   &[tab-active='false'] {
     display: none;
+  }
+}
+
+// Styling
+[tab-toggle] {
+  &:hover, &:active, &:focus {
+    outline: 0;
   }
 }
