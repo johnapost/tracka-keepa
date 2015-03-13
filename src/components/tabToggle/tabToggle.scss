@@ -1,0 +1,18 @@
+[tab-toggle] {
+  &:hover, &:active, &:focus {
+    outline: 0;
+  }
+}
+
+[tab-content] {
+  display: none;
+  &[tab-active] {
+    display: block;
+  }
+  &[tab-active='true'] {
+    display: block;
+  }
+  &[tab-active='false'] {
+    display: none;
+  }
+}

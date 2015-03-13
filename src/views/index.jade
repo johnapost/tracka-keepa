@@ -5,5 +5,11 @@ html.no-js
 
     .container
       .row
-        .col-xs-12
-          include ../partials/login-form.jade
+        .col-xs-12(ng-controller='tabToggleController')
+          div(tab-toggle='Login' tab-active) Login
+          div(tab-toggle='Register') Register
+
+          div(tab-content='Login' tab-active)
+            include ../partials/login-form.jade
+          div(tab-content='Register')
+            include ../partials/register-form.jade

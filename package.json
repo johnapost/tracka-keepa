@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Tracka Keepa",
   "main": "src/canvas/app.coffee",
+  "scripts": {
+    "postinstall": "bower install"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/johnapost/tracka-keepa.git"

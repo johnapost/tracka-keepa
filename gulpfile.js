@@ -24,7 +24,7 @@ gulp.task('del', function() {
 })
 
 gulp.task('sass', function() {
-  return gulp.src('src/styles/app.scss')
+  return gulp.src('src/app.scss')
     .pipe(changed('dist'))
     .pipe(sourcemaps.init())
       .pipe(sass({style: 'expanded'}))
@@ -38,7 +38,7 @@ gulp.task('sass', function() {
 })
 
 gulp.task('coffee', function() {
-  return gulp.src('src/scripts/**/*.coffee')
+  return gulp.src('src/**/*.coffee')
     .pipe(sourcemaps.init())
       .pipe(coffee({bare: true}))
       .on('error', errorHandler)
