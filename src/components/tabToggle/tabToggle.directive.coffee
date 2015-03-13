@@ -1,72 +1,12 @@
-app.directive 'tabContainer', [
-  'Utility'
+app.directive 'tabSet', [
   'Tab'
-  '$window'
-  (Utility, Tab, $window) ->
+  (Tab) ->
     restrict: 'A'
+    scope: true
     link: (scope, element, attrs) ->
-      tabs = element.children('[tab-toggle]')
 
-      tabToggleWidth = ->
-        width = 0
-        width += $(n).outerWidth(true) for n in tabs
-        width
-
-      tabContainerWidth = ->
-        width =
-          $(element).outerWidth(true) -
-          Utility.DiscountHorizontalOffset($(element)) - 50
-
-      # Responsive tabs
-      goResponsive = ->
-        $(tabs).hide()
-        $(element).css 'border-bottom', '0'
-        $(element).css 'padding-left', '0'
-
-        unless $(element).find('.tab-select').length
-
-          # Iterate through tabs and generate an option for each
-          htmlString =  "<div class='tab-select'>"
-          htmlString +=   "<select id='tab-responsive'>"
-
-          # Match default select option with current tab
-          for n in tabs
-            if $(n).is '[tab-active]'
-              htmlString += "<option val='#{$(n).text()}' selected='selected'>#{$(n).text()}</option>"
-            else
-              htmlString += "<option val='#{$(n).text()}'>#{$(n).text()}</option>"
-
-          htmlString +=   '</select>'
-          htmlString += '</div>'
-          $(element).append htmlString
-
-        newSelect = $(element).find 'select'
-
-        # Style the new select element
-        newSelect.styleSelect()
-
-        # Dropdown selection changes tab
-        angular.element(newSelect).bind 'change', ->
-          Tab.toggleTab id: scope.tabSet, tabbed: $(this).val()
-
-      # Normal tabs
-      leaveResponsive = ->
-        $(tabs).show()
-        $(element).css 'border-bottom', ''
-        $(element).css 'padding-left', ''
-        $(element).find('.tab-select').remove()
-
-      angular.element($window).bind 'load', ->
-        if tabToggleWidth() > tabContainerWidth()
-          goResponsive()
-        else
-          leaveResponsive()
-
-      angular.element($window).bind 'resize', ->
-        if tabToggleWidth() > tabContainerWidth()
-          goResponsive()
-        else
-          leaveResponsive()
+      # Announce to Tab factory that I need a new tabSet assigned
+      scope.tabSet = Tab.newTabSet()
 ]
 
 # Controls toggle state
