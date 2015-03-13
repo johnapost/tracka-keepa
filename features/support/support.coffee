@@ -16,9 +16,15 @@ module.exports = ->
         i++
       message.slice(0, stackTraceDepth + 1).join '\n'
 
+  # Testing support
   chai = require 'chai'
   chaiAsPromised = require 'chai-as-promised'
   chai.use chaiAsPromised
   expect = chai.expect
 
-  return expect: expect
+  request = require 'request'
+  firebaseTokenGenerator = require 'firebase-token-generator'
+  tokenGenerator = new firebaseTokenGenerator process.env.FIREBASE_TRACKA_KEEPA_SECRET
+  token = tokenGenerator.createToken {uid: 'admin'}, {admin: true}
+
+  expect: expect, request: request, token: token
