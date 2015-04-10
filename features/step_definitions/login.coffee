@@ -25,10 +25,10 @@ module.exports = ->
 
   @Then 'I should see my dashboard', (callback) ->
     callback.pending()
-    # expect $('.dashboard').getText().to.eventually.equal 'Dashboard'
+    # expect($('.dashboard').getText()).to.eventually.equal 'Dashboard'
     # .then -> callback()
 
   @Then 'I should see an error message', (callback) ->
     callback.pending()
-    # expect $('.error').getText().to.eventually.equal 'Error'
+    # expect($('.error').getText()).to.eventually.equal 'Error'
     # .then -> callback()

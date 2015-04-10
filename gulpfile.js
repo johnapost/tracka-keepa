@@ -199,12 +199,25 @@ gulp.task('production', function() {
 })
 
 // Set up local server
-gulp.task('default', [
-  'vendor',
-  'jade',
-  'sass',
-  'coffee',
-  'fonts',
-  'images',
-  'serve'
-])
+if (argv.bdd === true) {
+  gulp.task('default', [
+    'vendor',
+    'jade',
+    'sass',
+    'coffee',
+    'fonts',
+    'images',
+    'serve',
+    'protractor'
+  ])
+} else {
+  gulp.task('default', [
+    'vendor',
+    'jade',
+    'sass',
+    'coffee',
+    'fonts',
+    'images',
+    'serve'
+  ])
+}
