@@ -8,6 +8,7 @@ Tracka Keepa is a time keeping web application. Specific features will include a
 
 Tests are run with Protractor and Cucumber. WebDriver must be running in order for the gulp tests to run.
 
+    npm install protractor cucumber http-server -g
     npm install
     bower install
     webdriver-manager update
