@@ -68,14 +68,16 @@ gulp.task('vendor', function() {
 // Process SASS
 gulp.task('sass', function() {
   return gulp.src('src/app.scss')
-    .pipe(changed(path + '/styles'))
+    .pipe(changed(path + '/styles', {extension: '.css'}))
+
     .pipe(sourcemaps.init())
       .pipe(sass({style: 'expanded'}))
       .on('error', errorHandler)
       .pipe(prefix({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']}))
       .pipe(rename('app.css'))
-      .pipe(chmod(755))
     .pipe(sourcemaps.write())
+
+    .pipe(chmod(755))
     .pipe(gulp.dest(path + '/styles'))
     .pipe(filter('**/*.css'))
     .pipe(reload({stream: true}))
@@ -83,12 +85,14 @@ gulp.task('sass', function() {
 
 gulp.task('sassProduction', function() {
   return gulp.src('src/app.scss')
-    .pipe(changed(path + '/styles'))
+    .pipe(changed(path + '/styles', {extension: '.css'}))
+
     .pipe(sass({style: 'expanded'}))
     .on('error', errorHandler)
     .pipe(prefix({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']}))
     .pipe(minifycss())
     .pipe(rename('styles.min.css'))
+
     .pipe(chmod(755))
     .pipe(gulp.dest(path + '/styles'))
 })
@@ -96,29 +100,29 @@ gulp.task('sassProduction', function() {
 
 // Process CoffeeScript
 gulp.task('coffee', function() {
-  return gulp.src('src/**/*.coffee')
+  return gulp.src(['src/app.coffee', 'src/**/*.coffee'])
     .pipe(changed(path + '/scripts'))
 
     .pipe(sourcemaps.init())
       .pipe(coffee({bare: true}))
       .on('error', errorHandler)
       .pipe(concat('app.js'))
-      .pipe(chmod(755))
     .pipe(sourcemaps.write())
 
+    .pipe(chmod(755))
     .pipe(gulp.dest(path + '/scripts'))
 })
 
 gulp.task('coffeeProduction', function() {
   return gulp.src('src/**/*.coffee')
-    .pipe(changed(path + '/scripts'))
+    .pipe(changed(path + '/scripts', {extension: '.js'}))
 
     .pipe(coffee({bare: true}))
     .on('error', errorHandler)
     .pipe(concat('app.min.js'))
     .pipe(uglify())
-    .pipe(chmod(755))
 
+    .pipe(chmod(755))
     .pipe(gulp.dest(path + '/scripts'))
 })
 
@@ -126,12 +130,12 @@ gulp.task('coffeeProduction', function() {
 // Process Jade
 gulp.task('jade', function() {
   return gulp.src('src/views/**/*.jade')
-    .pipe(changed(path))
+    .pipe(changed(path, {extension: '.html'}))
+
     .pipe(jade({pretty: true}))
-
     .on('error', errorHandler)
-    .pipe(chmod(755))
 
+    .pipe(chmod(755))
     .pipe(gulp.dest(path))
 })
 
@@ -154,7 +158,7 @@ gulp.task('imagesProduction', function() {
 
 
 // Server
-gulp.task('serve', function() {
+gulp.task('serve', ['sass'], function() {
   browserSync({
     server: {
       baseDir: path

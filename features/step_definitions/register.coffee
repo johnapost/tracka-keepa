@@ -14,5 +14,5 @@ module.exports = ->
     .then -> callback()
 
   @Then 'I should have my account created', (callback) ->
-    expect($('.flash').getText()).to.eventually.equal 'Account successfully created'
+    expect($('[flash]').getText()).to.eventually.equal 'Account successfully created'
     .then -> callback()
