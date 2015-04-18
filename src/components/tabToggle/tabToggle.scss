@@ -1,0 +1,20 @@
+// Functional
+[tab-content] {
+  display: none;
+  &[tab-active] {
+    display: block;
+  }
+  &[tab-active='true'] {
+    display: block;
+  }
+  &[tab-active='false'] {
+    display: none;
+  }
+}
+
+// Styling
+[tab-toggle] {
+  &:hover, &:active, &:focus {
+    outline: 0;
+  }
+}

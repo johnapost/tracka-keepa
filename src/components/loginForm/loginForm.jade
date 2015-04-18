@@ -1,0 +1,9 @@
+h1 Login
+form.form-horizontal(login-form ng-submit='submit()' name='loginForm')
+  .form-group
+    .col-sm-8.col-sm-offset-2
+      input.form-control.email(type='email' placeholder='Email' ng-model='user.email' required)
+      input.form-control.password(type='password' placeholder='Password' ng-model='user.password' required)
+  .form-group
+    .col-sm-8.col-sm-offset-2
+      button.btn.btn-primary.btn-md.submit(type='submit' ng-disabled='loginForm.$invalid') Login
