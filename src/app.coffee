@@ -1,3 +1,9 @@
+# Connect to proper firebase
+if window.location.host is 'localhost:4000'
+  appUrl = 'https://tracka-keepa-dev.firebaseio.com'
+else
+  appUrl = window.location.host
+
 # Create angular app
 app = angular.module 'trackaKeepa', ['firebase']
 

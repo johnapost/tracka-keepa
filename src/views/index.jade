@@ -2,3 +2,16 @@ doctype html5
 html.no-js
   include ../partials/head.jade
   body(ng-app='trackaKeepa')
+
+    .container
+      .row
+        .col-xs-12
+          div(flash)
+          div(tab-set)
+            div(tab-toggle='Login' tab-active) Login
+            div(tab-toggle='Register') Register
+
+            div(tab-content='Login' tab-active)
+              include ../components/loginForm/loginForm.jade
+            div(tab-content='Register')
+              include ../components/registerForm/registerForm.jade
