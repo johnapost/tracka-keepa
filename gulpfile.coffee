@@ -53,3 +53,11 @@ else
     'images',
     'serve'
   ]
+
+gulp.task 'deploy', [
+  'vendor',
+  'jade',
+  'sass',
+  'coffee',
+  'images'
+]
