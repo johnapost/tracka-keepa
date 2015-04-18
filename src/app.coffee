@@ -1,6 +1,4 @@
 # Connect to proper firebase
-# appUrl =
-
 if window.location.host is 'localhost:4000'
   appUrl = 'https://tracka-keepa-dev.firebaseio.com'
 else
