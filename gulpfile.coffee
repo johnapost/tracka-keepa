@@ -30,10 +30,6 @@ require './gulp/test.coffee'
 # Server
 require './gulp/server.coffee'
 
-# Prepares production-ready files
-gulp.task 'production', ->
-  runSequence 'coffeeProduction', 'imagesProduction'
-
 if argv.bdd
   gulp.task 'default', [
     'vendor',
@@ -57,7 +53,7 @@ else
 gulp.task 'deploy', [
   'vendor',
   'jade',
-  'sass',
-  'coffee',
-  'images'
+  'sassProduction',
+  'coffeeProduction',
+  'imagesProduction'
 ]

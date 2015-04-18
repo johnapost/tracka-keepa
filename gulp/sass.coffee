@@ -30,3 +30,18 @@ gulp.task 'sass', ->
     .pipe gulp.dest("#{config.path}/styles")
     .pipe filter('**/*.css')
     .pipe browserSync.reload(stream: true)
+
+gulp.task 'sassProduction', ->
+  gulp.src 'src/app.scss'
+    .pipe changed("#{config.path}/styles", extension: '.css')
+
+    .pipe sass(style: 'expanded')
+    .on 'error', errorHandler
+    .pipe prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'])
+    .pipe minifycss()
+    .pipe rename('app.css')
+    .pipe chmod(755)
+
+    .pipe gulp.dest("#{config.path}/styles")
+    .pipe filter('**/*.css')
+    .pipe browserSync.reload(stream: true)
