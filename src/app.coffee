@@ -10,6 +10,10 @@ app = angular.module 'trackaKeepa', ['firebase', 'ngMaterial']
 # Make Modernizr injectable
 app.constant 'Modernizr', Modernizr
 
+# Configure ngMaterial
+app.config ($mdThemingProvider) ->
+  $mdThemingProvider.theme 'default'
+
 # Create console.log for incompatible browsers
 window.console = window.console or {}
 window.console.log = window.console.log or ->

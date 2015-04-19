@@ -26,7 +26,7 @@ gulp.task 'vendor', ->
     'bower_components/angular-material/angular-material.min.css'
   ]
   .pipe changed "#{config.path}/styles"
-  .pipe minifycss()
+  .pipe minifycss keepSpecialComments: 0
   .pipe concat 'vendor.css'
   .pipe gulp.dest "#{config.path}/styles"
 

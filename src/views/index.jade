@@ -1,17 +1,16 @@
 doctype html5
 html.no-js
-  include ../partials/head.jade
-  body(ng-app='trackaKeepa')
+  include ../partials/_head
+  body(ng-app='trackaKeepa' layout='column' layout-fill)
 
-    .container
-      .row
-        .col-xs-12
-          div(flash)
-          div(tab-set)
-            div(tab-toggle='Login' tab-active) Login
-            div(tab-toggle='Register') Register
+    md-content
+      include ../partials/_toolbar
 
-            div(tab-content='Login' tab-active)
+      div(layout='column' layout-align='center')
+        md-card
+          md-tabs
+            md-tab(label='Login')
               include ../components/loginForm/loginForm.jade
-            div(tab-content='Register')
+
+            md-tab(label='Register')
               include ../components/registerForm/registerForm.jade
