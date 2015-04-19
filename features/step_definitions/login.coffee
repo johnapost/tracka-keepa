@@ -2,9 +2,9 @@ module.exports = ->
   support = require '../support/support.coffee'
   expect = support().expect
 
-  email = $('[login-form] .email')
-  password = $('[login-form] .password')
-  submit = $('[login-form] .submit')
+  email = $('[login-form] [type=email]')
+  password = $('[login-form] [type=password]')
+  submit = $('[login-form] [type=submit]')
 
   @When 'I visit the homepage', (callback) ->
     browser.get '/'

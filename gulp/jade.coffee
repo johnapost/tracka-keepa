@@ -19,7 +19,7 @@ gulp.task 'jade', ->
 
     .pipe cached 'jade'
     .pipe inheritance basedir: 'src'
-    .pipe debug title: 'processed'
+    .pipe debug title: 'processed jade'
     .pipe filter (file) ->
       /views/.test file.path
 
