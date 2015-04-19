@@ -16,7 +16,7 @@ errorHandler = (error) ->
 gulp.task 'coffee', ->
   gulp.src 'src/**/*.coffee'
     .pipe cache 'coffee'
-    .pipe debug title: 'processed'
+    .pipe debug title: 'processed coffee'
     .pipe sourcemaps.init()
 
     .pipe coffee(bare: true)
@@ -31,7 +31,7 @@ gulp.task 'coffee', ->
 gulp.task 'coffeeProduction', ->
   gulp.src 'src/**/*.coffee'
     .pipe cache 'coffee'
-    .pipe debug title: 'processed'
+    .pipe debug title: 'processed coffee'
 
     .pipe coffee(bare: true)
     .on 'error', errorHandler

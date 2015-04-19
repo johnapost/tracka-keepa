@@ -21,10 +21,11 @@ module.exports = ->
   chaiAsPromised = require 'chai-as-promised'
   chai.use chaiAsPromised
   expect = chai.expect
-
   request = require 'request'
-  firebaseTokenGenerator = require 'firebase-token-generator'
-  tokenGenerator = new firebaseTokenGenerator process.env.FIREBASE_TRACKA_KEEPA_SECRET
-  token = tokenGenerator.createToken {uid: 'admin'}, {admin: true}
 
-  expect: expect, request: request, token: token
+  # E2E proof-of-concept
+  # firebaseTokenGenerator = require 'firebase-token-generator'
+  # tokenGenerator = new firebaseTokenGenerator process.env.FIREBASE_TRACKA_KEEPA_SECRET
+  # token = tokenGenerator.createToken {uid: 'admin'}, {admin: true}
+
+  expect: expect, request: request
