@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 browserSync = require 'browser-sync'
 config = require './config.coffee'
+argv = require('yargs').argv
 
 gulp.task 'serve', [
     'vendor',
@@ -17,7 +18,12 @@ gulp.task 'serve', [
     notify: false
 
   gulp.watch 'src/**/*.scss', ['sass']
-  gulp.watch 'src/**/*.coffee', [['coffee', 'protractor'], browserSync.reload]
-  gulp.watch 'src/**/*.jade', [['jade', 'protractor'], browserSync.reload]
+
+  if argv.bdd
+    gulp.watch 'src/**/*.coffee', [['coffee', 'protractor'], browserSync.reload]
+    gulp.watch 'src/**/*.jade', [['jade', 'protractor'], browserSync.reload]
+  else
+    gulp.watch 'src/**/*.coffee', ['coffee', browserSync.reload]
+    gulp.watch 'src/**/*.jade', ['jade', browserSync.reload]
 
 module.exports = gulp
