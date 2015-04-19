@@ -14,7 +14,7 @@ app.constant 'Modernizr', Modernizr
 app.config [
   '$mdThemingProvider'
   ($mdThemingProvider) ->
-  $mdThemingProvider.theme 'default'
+    $mdThemingProvider.theme 'default'
 ]
 
 # Create console.log for incompatible browsers
