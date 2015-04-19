@@ -11,8 +11,11 @@ app = angular.module 'trackaKeepa', ['firebase', 'ngMaterial']
 app.constant 'Modernizr', Modernizr
 
 # Configure ngMaterial
-app.config ($mdThemingProvider) ->
+app.config [
+  '$mdThemingProvider'
+  ($mdThemingProvider) ->
   $mdThemingProvider.theme 'default'
+]
 
 # Create console.log for incompatible browsers
 window.console = window.console or {}
