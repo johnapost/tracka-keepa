@@ -7,7 +7,7 @@ module.exports = ->
   submit = $('[login-form] [type=submit]')
 
   @When 'I visit the homepage', (callback) ->
-    browser.get '/'
+    browser.get '/?mock=true'
     .then -> expect(browser.getTitle()).to.eventually.equal 'Tracka Keepa'
     .then -> callback()
 

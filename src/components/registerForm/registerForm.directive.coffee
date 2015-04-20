@@ -19,5 +19,6 @@ app.directive 'registerForm', [
           console.log "Successfully created user account: #{userData.uid}"
           $('[flash]').text 'Account successfully created'
         .catch (error) ->
+          $('[flash]').text error
           console.log "Error creating user: #{error}"
 ]

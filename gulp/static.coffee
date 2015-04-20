@@ -16,7 +16,6 @@ gulp.task 'vendor', ->
     'bower_components/angular-material/angular-material.min.js'
     'bower_components/firebase/firebase.js'
     'bower_components/angularfire/dist/angularfire.min.js'
-    'bower_components/mockfirebase/browser/mockfirebase.js'
   ]
   .pipe changed "#{config.path}/scripts"
   .pipe uglify()

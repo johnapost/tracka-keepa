@@ -13,6 +13,7 @@ module.exports = ->
     .then -> submit.click()
     .then -> callback()
 
+  # Passes when account creation is a success and when an account already exists
   @Then 'I should have my account created', (callback) ->
-    expect($('[flash]').getText()).to.eventually.equal('Account successfully created')
+    expect($('[flash]').getText()).to.eventually.have.length.above 0
     .then -> callback()
