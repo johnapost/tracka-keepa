@@ -14,4 +14,5 @@ module.exports = ->
 
     # Uncomment this when looking to clear real data
     # clearDatabase firebaseEnv
+
     callback()

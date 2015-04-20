@@ -16,7 +16,7 @@ app.directive 'registerForm', [
         auth.$createUser
           email: scope.user.email
           password: scope.user.password
-        .then (userData) ->
+        .then (authData) ->
           notification.text 'Account successfully created!'
         .catch (error) ->
           notification.text error

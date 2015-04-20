@@ -16,7 +16,7 @@ app.directive 'loginForm', [
         auth.$authWithPassword
           email: scope.user.email
           password: scope.user.password
-        .then (userData) ->
+        .then (authData) ->
           notification.text 'Welcome back!'
         .catch (error) ->
           notification.text error
