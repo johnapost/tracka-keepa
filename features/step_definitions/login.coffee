@@ -5,6 +5,7 @@ module.exports = ->
   email = $('[login-form] [type=email]')
   password = $('[login-form] [type=password]')
   submit = $('[login-form] [type=submit]')
+  notification = $('[login-form] [notification]')
 
   @When 'I visit the homepage', (callback) ->
     browser.get '/?mock=true'
@@ -24,11 +25,9 @@ module.exports = ->
     .then -> callback()
 
   @Then 'I should see my dashboard', (callback) ->
-    callback.pending()
-    # expect($('.dashboard').getText()).to.eventually.equal 'Dashboard'
-    # .then -> callback()
+    expect(notification.getText()).to.eventually.equal 'Welcome back!'
+    .then -> callback()
 
   @Then 'I should see an error message', (callback) ->
-    callback.pending()
-    # expect($('.error').getText()).to.eventually.equal 'Error'
-    # .then -> callback()
+    expect(notification.getText()).to.eventually.include 'Error'
+    .then -> callback()

@@ -1,6 +1,7 @@
 md-content.md-padding
 
   form(login-form ng-submit='submit()' name='loginForm')
+    div(notification)
     md-input-container
       label Email
       input(type='email' ng-model='user.email' required)

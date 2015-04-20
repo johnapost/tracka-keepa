@@ -5,6 +5,7 @@ module.exports = ->
   email = $('[register-form] [type=email]')
   password = $('[register-form] [type=password]')
   submit = $('[register-form] [type=submit]')
+  notification = $('[register-form] [notification]')
 
   @When 'I register for an account', (callback) ->
     $("[label='Register']").click()
@@ -15,5 +16,5 @@ module.exports = ->
 
   # Passes when account creation is a success and when an account already exists
   @Then 'I should have my account created', (callback) ->
-    expect($('[flash]').getText()).to.eventually.have.length.above 0
+    expect(notification.getText()).to.eventually.have.length.above 0
     .then -> callback()
