@@ -1,2 +1,6 @@
-@import "components/tabToggle/tabToggle";
-// @import "components/*.scss"
+@import 'components/authCard/authCard.scss';
+
+// ngMaterial Overrides
+.md-tabs-content .md-tab-content {
+  height: auto;
+}
