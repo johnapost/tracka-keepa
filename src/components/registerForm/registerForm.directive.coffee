@@ -6,6 +6,7 @@ app.directive 'registerForm', [
     link: (scope, element, attrs) ->
       ref = new Firebase appUrl
       auth = $firebaseAuth ref
+      notification = $(element).find '[notification]'
 
       scope.user =
         email: null
@@ -15,9 +16,8 @@ app.directive 'registerForm', [
         auth.$createUser
           email: scope.user.email
           password: scope.user.password
-        .then (userData) ->
-          console.log "Successfully created user account: #{userData.uid}"
-          $('[flash]').text 'Account successfully created'
+        .then (authData) ->
+          notification.text 'Account successfully created!'
         .catch (error) ->
-          console.log "Error creating user: #{error}"
+          notification.text error
 ]

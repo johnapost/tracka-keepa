@@ -1,15 +1,13 @@
-md-content(layout-padding layout='column' layout-align='center center')
+md-content.md-padding
 
   form(login-form ng-submit='submit()' name='loginForm')
-    h1 Login
+    div(notification)
+    md-input-container
+      label Email
+      input(type='email' ng-model='user.email' required)
 
-    div(layout='column')
-      md-input-container(flex)
-        label Email
-        input(type='email' ng-model='user.email' required)
-
-      md-input-container(flex)
-        label Password
-        input(type='password' ng-model='user.password' required)
+    md-input-container
+      label Password
+      input(type='password' ng-model='user.password' required)
 
     md-button.md-raised.md-primary(type='submit' ng-disabled='loginForm.$invalid') Login

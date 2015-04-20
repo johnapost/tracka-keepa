@@ -4,7 +4,7 @@ clearDatabase = (env) ->
   token = support().token
 
   # Delete test data, used as proof-of-concept
-  request.del "https://tracka-keepa-#{env}.firebaseio.com/users/test.json?auth=#{token}"
+  request.del "https://tracka-keepa-#{env}.firebaseio.com/test.json?auth=#{token}"
 
 module.exports = ->
 
@@ -14,4 +14,5 @@ module.exports = ->
 
     # Uncomment this when looking to clear real data
     # clearDatabase firebaseEnv
+
     callback()

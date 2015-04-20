@@ -5,7 +5,7 @@ else
   appUrl = window.location.host
 
 # Create angular app
-app = angular.module 'trackaKeepa', ['firebase', 'ngMaterial']
+app = angular.module 'trackaKeepa', ['firebase', 'ngMaterial', 'ngAnimate']
 
 # Make Modernizr injectable
 app.constant 'Modernizr', Modernizr
@@ -14,7 +14,7 @@ app.constant 'Modernizr', Modernizr
 app.config [
   '$mdThemingProvider'
   ($mdThemingProvider) ->
-  $mdThemingProvider.theme 'default'
+    $mdThemingProvider.theme 'default'
 ]
 
 # Create console.log for incompatible browsers

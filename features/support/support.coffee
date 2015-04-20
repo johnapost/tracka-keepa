@@ -24,8 +24,8 @@ module.exports = ->
   request = require 'request'
 
   # E2E proof-of-concept
-  # firebaseTokenGenerator = require 'firebase-token-generator'
-  # tokenGenerator = new firebaseTokenGenerator process.env.FIREBASE_TRACKA_KEEPA_SECRET
-  # token = tokenGenerator.createToken {uid: 'admin'}, {admin: true}
+  firebaseTokenGenerator = require 'firebase-token-generator'
+  tokenGenerator = new firebaseTokenGenerator process.env.FIREBASE_TRACKA_KEEPA_SECRET
+  token = tokenGenerator.createToken {uid: 'admin'}, {admin: true}
 
-  expect: expect, request: request
+  expect: expect, request: request, token: token
