@@ -27,7 +27,7 @@ module.exports = ->
     .then -> callback()
 
   @Then 'I should see my dashboard', (callback) ->
-    expect(notification.getText()).to.eventually.equal('Welcome back!')
+    expect(notification.getText()).to.eventually.equal 'Welcome back!'
     .then -> callback()
 
   @Then 'I should see an error message', (callback) ->
