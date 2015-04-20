@@ -1,5 +1,5 @@
 exports.config = {
-  baseUrl: 'http://localhost:4000',
+  baseUrl: 'http://localhost:4001',
   seleniumAddress: 'http://localhost:4444/wd/hub',
   rootElement: 'body',
 

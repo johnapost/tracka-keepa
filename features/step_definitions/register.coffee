@@ -14,8 +14,5 @@ module.exports = ->
     .then -> callback()
 
   @Then 'I should have my account created', (callback) ->
-    callback.pending()
-    # setTimeout ->
-    #   expect($('[flash]').getText()).to.eventually.equal 'Account successfully created'
-    #   .then -> callback()
-    # , 8000
+    expect($('[flash]').getText()).to.eventually.equal('Account successfully created')
+    .then -> callback()
