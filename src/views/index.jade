@@ -1,12 +1,13 @@
 doctype html5
 html.no-js
   include ../partials/_head
-  body(ng-app='trackaKeepa' layout='column' layout-fill)
+  body(ng-app='trackaKeepa' layout='column')
 
-    md-content
-      include ../partials/_toolbar
+    include ../partials/_toolbar
 
-      div(layout='column' layout-align='center')
+    div(layout='row' layout-align='center')
+      md-content(layout='column' flex='100' flex-gt-sm='70')
+
         md-card
           md-tabs
             md-tab(label='Login')
@@ -14,3 +15,9 @@ html.no-js
 
             md-tab(label='Register')
               include ../components/registerForm/registerForm.jade
+
+        md-card(layout-padding)
+          p This is the first card
+
+        md-card(layout-padding)
+          p This is a second card

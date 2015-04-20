@@ -1,2 +1,5 @@
-@import "components/tabToggle/tabToggle";
-// @import "components/*.scss"
+// ngMaterial Overrides
+
+.md-tabs-content .md-tab-content {
+  height: auto;
+}
