@@ -6,6 +6,7 @@ module.exports = ->
   password = $('[login-form] [type=password]')
   submit = $('[login-form] [type=submit]')
   notification = $('[login-form] [notification]')
+  unauth = $('[unauth]')
 
   @When 'I visit the homepage', (callback) ->
     browser.get '/?unauth=true'
@@ -13,21 +14,19 @@ module.exports = ->
     .then -> callback()
 
   @When 'I login to my account with valid credentials', (callback) ->
-    browser.manage().deleteAllCookies()
-    .then -> email.sendKeys browser.params.login.email
+    email.sendKeys browser.params.login.email
     .then -> password.sendKeys browser.params.login.password
     .then -> submit.click()
     .then -> callback()
 
   @When 'I login to my account with invalid credentials', (callback) ->
-    browser.manage().deleteAllCookies()
-    .then -> email.sendKeys browser.params.login.email
+    email.sendKeys browser.params.login.email
     .then -> password.sendKeys 'badpassword'
     .then -> submit.click()
     .then -> callback()
 
   @Then 'I should see my dashboard', (callback) ->
-    expect(notification.getText()).to.eventually.equal 'Welcome back!'
+    expect(unauth.isDisplayed()).to.eventually.equal true
     .then -> callback()
 
   @Then 'I should see an error message', (callback) ->

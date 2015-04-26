@@ -5,7 +5,11 @@ else
   appUrl = window.location.host
 
 # Create angular app
-app = angular.module 'trackaKeepa', ['firebase', 'ngMaterial', 'ngAnimate']
+app = angular.module 'trackaKeepa', [
+  'firebase'
+  'ngMaterial'
+  'ngAnimate'
+]
 
 # Make Modernizr injectable
 app.constant 'Modernizr', Modernizr

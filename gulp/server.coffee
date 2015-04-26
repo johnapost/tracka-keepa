@@ -16,12 +16,14 @@ gulp.task 'serve', [
     open: false
     reloadOnRestart: false
     notify: false
+    ghostMode: argv.ghost || false
 
   gulp.watch 'src/**/*.scss', ['sass']
 
   if argv.bdd
     gulp.watch 'src/**/*.coffee', [['coffee', 'protractor'], browserSync.reload]
     gulp.watch 'src/**/*.jade', [['jade', 'protractor'], browserSync.reload]
+    gulp.watch ['features/**/*.coffee', 'features/**/*.feature'], [['protractor'], browserSync.reload]
   else
     gulp.watch 'src/**/*.coffee', ['coffee', browserSync.reload]
     gulp.watch 'src/**/*.jade', ['jade', browserSync.reload]
