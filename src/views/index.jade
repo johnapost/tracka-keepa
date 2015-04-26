@@ -6,7 +6,7 @@ html.no-js
     include ../partials/_toolbar
 
     div(layout='row' layout-align='center')
-      md-content(layout='column' flex='100')
+      md-content(layout='column' flex='100' layout-align='start center')
 
         md-card(auth-card)
           md-tabs
@@ -16,8 +16,8 @@ html.no-js
             md-tab(label='Register')
               include ../components/registerForm/registerForm.jade
 
-        md-card(layout-padding)
+        //- md-card(layout-padding)
           p This is the first card
 
-        md-card(layout-padding)
+        //- md-card(layout-padding)
           p This is a second card

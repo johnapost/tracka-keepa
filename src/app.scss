@@ -7,3 +7,15 @@
 .md-tabs-content .md-tab-content {
   height: auto;
 }
+
+md-card {
+  width: 100%;
+
+  @include gt-sm {
+    width: 80%;
+  }
+
+  @include gt-md {
+    width: 40%;
+  }
+}
