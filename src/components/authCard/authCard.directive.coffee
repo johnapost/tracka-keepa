@@ -13,10 +13,11 @@ app.directive 'authCard', [
       if $window.location.search.indexOf('unauth=true') > -1
         auth.$unauth()
 
+      # Unauthenticated user detected, show authCard
       unless auth.$getAuth()
         $(element).css 'display', 'block'
 
-        auth.$onAuth (authData) ->
-          $(element).velocity 'transition.slideUpOut', {duration: 600} if authData
+      auth.$onAuth (authData) ->
+        $(element).velocity 'transition.slideRightOut', {duration: 600} if authData
 
 ]

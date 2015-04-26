@@ -1,5 +1,6 @@
 gulp = require 'gulp'
 rename = require 'gulp-rename'
+newer = require 'gulp-newer'
 sourcemaps = require 'gulp-sourcemaps'
 sass = require 'gulp-sass'
 prefix = require 'gulp-autoprefixer'
@@ -15,6 +16,7 @@ errorHandler = (error) ->
 
 gulp.task 'sass', ->
   gulp.src 'src/app.scss'
+    .pipe newer "#{config.path}/styles/app.css"
     .pipe sourcemaps.init()
 
     .pipe sass(style: 'expanded')

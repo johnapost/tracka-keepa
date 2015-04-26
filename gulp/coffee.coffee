@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 cache = require 'gulp-cached'
 debug = require 'gulp-debug'
+newer = require 'gulp-newer'
 remember = require 'gulp-remember'
 sourcemaps = require 'gulp-sourcemaps'
 coffee = require 'gulp-coffee'
@@ -15,8 +16,7 @@ errorHandler = (error) ->
 
 gulp.task 'coffee', ->
   gulp.src 'src/**/*.coffee'
-    .pipe cache 'coffee'
-    .pipe debug title: 'processed coffee'
+    .pipe newer "#{config.path}/styles/app.css"
     .pipe sourcemaps.init()
 
     .pipe coffee(bare: true)
@@ -30,8 +30,7 @@ gulp.task 'coffee', ->
 
 gulp.task 'coffeeProduction', ->
   gulp.src 'src/**/*.coffee'
-    .pipe cache 'coffee'
-    .pipe debug title: 'processed coffee'
+    .pipe newer "#{config.path}/styles/app.css"
 
     .pipe coffee(bare: true)
     .on 'error', errorHandler

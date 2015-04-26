@@ -6,6 +6,7 @@ module.exports = ->
   password = $('[login-form] [type=password]')
   submit = $('[login-form] [type=submit]')
   notification = $('[login-form] [notification]')
+  unauth = $('[unauth]')
 
   @When 'I visit the homepage', (callback) ->
     browser.get '/?unauth=true'
@@ -27,7 +28,7 @@ module.exports = ->
     .then -> callback()
 
   @Then 'I should see my dashboard', (callback) ->
-    expect(notification.getText()).to.eventually.equal 'Welcome back!'
+    expect(unauth.isDisplayed()).to.eventually.equal true
     .then -> callback()
 
   @Then 'I should see an error message', (callback) ->
