@@ -14,15 +14,13 @@ module.exports = ->
     .then -> callback()
 
   @When 'I login to my account with valid credentials', (callback) ->
-    browser.manage().deleteAllCookies()
-    .then -> email.sendKeys browser.params.login.email
+    email.sendKeys browser.params.login.email
     .then -> password.sendKeys browser.params.login.password
     .then -> submit.click()
     .then -> callback()
 
   @When 'I login to my account with invalid credentials', (callback) ->
-    browser.manage().deleteAllCookies()
-    .then -> email.sendKeys browser.params.login.email
+    email.sendKeys browser.params.login.email
     .then -> password.sendKeys 'badpassword'
     .then -> submit.click()
     .then -> callback()

@@ -18,6 +18,9 @@ app.directive 'authCard', [
         $(element).css 'display', 'block'
 
       auth.$onAuth (authData) ->
-        $(element).velocity 'transition.slideRightOut', {duration: 600} if authData
+        if authData
+          $(element).velocity 'transition.slideRightOut', {duration: 600}
+        else
+          $(element).velocity 'transition.slideLeftIn', {duration: 600}
 
 ]
