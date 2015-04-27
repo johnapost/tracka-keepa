@@ -6,3 +6,4 @@ Scenario: User can logout
   And I login to my account with valid credentials
   And I logout from my account
   Then I should see the login card
+  And the login form should be cleared

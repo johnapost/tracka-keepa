@@ -1,6 +1,7 @@
 app.directive 'loginForm', [
   '$firebaseAuth'
-  ($firebaseAuth) ->
+  '$timeout'
+  ($firebaseAuth, $timeout) ->
     restrict: 'A'
     scope: true
     link: (scope, element, attrs) ->
@@ -17,7 +18,15 @@ app.directive 'loginForm', [
           email: scope.user.email
           password: scope.user.password
         .then (authData) ->
-          notification.text 'Welcome back!'
+
+          # Reset form to pristine after submission
+          $timeout ->
+            scope.$apply ->
+              scope.user =
+                email: null
+                password: null
+              notification.text ''
+          , 600
         .catch (error) ->
           notification.text error
 ]
