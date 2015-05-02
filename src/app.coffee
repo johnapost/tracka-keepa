@@ -2,7 +2,7 @@
 if window.location.host.indexOf(':') > -1
   appUrl = 'https://tracka-keepa-dev.firebaseio.com'
 else
-  appUrl = window.location.host
+  appUrl = window.location.origin
 
 # Create angular app
 app = angular.module 'trackaKeepa', [
