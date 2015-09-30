@@ -1,7 +1,6 @@
 # Dependencies
 gulp = require 'gulp'
 del = require 'del'
-runSequence = require 'run-sequence'
 config = require './gulp/config.coffee'
 argv = require('yargs').argv
 
@@ -25,7 +24,7 @@ require './gulp/jade.coffee'
 require './gulp/images.coffee'
 
 # Tests
-# require './gulp/test.coffee'
+require './gulp/test.coffee'
 
 # Server
 require './gulp/server.coffee'
@@ -38,6 +37,12 @@ gulp.task 'default', [
   'images',
   'api',
   'serve'
+]
+
+# Karma TDD
+gulp.task 'tdd', [
+  'default'
+  'test'
 ]
 
 gulp.task 'deploy', [
