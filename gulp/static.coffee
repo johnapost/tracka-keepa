@@ -1,37 +1,34 @@
 gulp = require 'gulp'
-changed = require 'gulp-changed'
+newer = require 'gulp-newer'
 concat = require 'gulp-concat'
+uglify = require 'gulp-uglify'
 merge = require 'merge-stream'
-uglify = require 'gulp-uglifyjs'
-minifycss = require 'gulp-minify-css'
+csso = require 'gulp-csso'
 config = require './config.coffee'
 
 gulp.task 'vendor', ->
   js = gulp.src [
     'bower_components/modernizr/modernizr.js'
     'bower_components/jquery/dist/jquery.min.js'
+    'bower_components/socket.io.client/dist/socket.io-1.3.5.js'
     'bower_components/angular/angular.min.js'
-    'bower_components/angular-aria/angular-aria.min.js'
-    'bower_components/angular-animate/angular-animate.min.js'
-    'bower_components/angular-material/angular-material.min.js'
-    'bower_components/firebase/firebase.js'
-    'bower_components/angularfire/dist/angularfire.min.js'
+    'bower_components/angular-ui-router/release/angular-ui-router.min.js'
+    'bower_components/angular-socket-io/socket.min.js'
     'bower_components/velocity/velocity.min.js'
     'bower_components/velocity/velocity.ui.min.js'
+    'bower_components/bootstrap/dist/js/bootstrap.min.js'
   ]
-  .pipe changed "#{config.path}/scripts"
+  .pipe newer "#{config.path}/scripts"
   .pipe uglify()
   .pipe concat 'vendor.js'
   .pipe gulp.dest "#{config.path}/scripts"
 
   css = gulp.src [
-    'bower_components/angular-material/angular-material.min.css'
+    'bower_components/bootstrap/dist/css/bootstrap.min.css'
   ]
-  .pipe changed "#{config.path}/styles"
-  .pipe minifycss keepSpecialComments: 0
+  .pipe newer "#{config.path}/styles"
+  .pipe csso()
   .pipe concat 'vendor.css'
   .pipe gulp.dest "#{config.path}/styles"
-
-  merge js, css
 
 module.exports = gulp

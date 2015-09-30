@@ -25,30 +25,20 @@ require './gulp/jade.coffee'
 require './gulp/images.coffee'
 
 # Tests
-require './gulp/test.coffee'
+# require './gulp/test.coffee'
 
 # Server
 require './gulp/server.coffee'
 
-if argv.bdd
-  gulp.task 'default', [
-    'vendor',
-    'jade',
-    'sass',
-    'coffee',
-    'images',
-    'serve',
-    'protractor'
-  ]
-else
-  gulp.task 'default', [
-    'vendor',
-    'jade',
-    'sass',
-    'coffee',
-    'images',
-    'serve'
-  ]
+gulp.task 'default', [
+  'vendor',
+  'jade',
+  'sass',
+  'coffee',
+  'images',
+  'api',
+  'serve'
+]
 
 gulp.task 'deploy', [
   'vendor',

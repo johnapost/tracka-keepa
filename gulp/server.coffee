@@ -2,13 +2,21 @@ gulp = require 'gulp'
 browserSync = require 'browser-sync'
 config = require './config.coffee'
 argv = require('yargs').argv
+nodemon = require 'gulp-nodemon'
+
+gulp.task 'api', ->
+  nodemon
+    script: 'server/server.js'
+    ext: 'coffee'
+    ignore: ['src/*', 'gulp/*', 'gulpfile.coffee']
 
 gulp.task 'serve', [
     'vendor',
     'jade',
     'sass',
     'coffee',
-    'images'
+    'images',
+    'api'
   ], ->
   browserSync
     server: {baseDir: config.path}

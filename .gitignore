@@ -1,7 +1,5 @@
 bower_components
 dist
 node_modules
-.token
-.sass-cache/
-NOTES.md
 npm-debug.log
+.DS_Store
