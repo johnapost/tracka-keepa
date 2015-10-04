@@ -5,7 +5,7 @@ app.factory 'User', [
   '$state'
   'Socket'
   ($http, $rootScope, $window, $state, Socket) ->
-    path = $window.location.origin.replace ':4000', ':3000'
+    path = "http://localhost:3000"
 
     currentUser: ''
 
