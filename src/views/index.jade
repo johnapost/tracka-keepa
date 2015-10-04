@@ -1,11 +1,4 @@
-doctype html5
-html.no-js
-  include ../partials/_head
-  body(ng-app='trackaKeepa' layout='column')
+include ../partials/_head
+include ../partials/_nav
 
-    include ../partials/_toolbar
-
-    div(layout='row' layout-align='center')
-      md-content(layout='column' flex='100' layout-align='start center')
-
-        include ../components/authCard/authCard.jade
+div(ui-view='primaryContent')

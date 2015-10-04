@@ -1,7 +1,6 @@
 # Dependencies
 gulp = require 'gulp'
 del = require 'del'
-runSequence = require 'run-sequence'
 config = require './gulp/config.coffee'
 argv = require('yargs').argv
 
@@ -30,30 +29,28 @@ require './gulp/test.coffee'
 # Server
 require './gulp/server.coffee'
 
-if argv.bdd
-  gulp.task 'default', [
-    'vendor',
-    'jade',
-    'sass',
-    'coffee',
-    'images',
-    'serve',
-    'protractor'
-  ]
-else
-  gulp.task 'default', [
-    'vendor',
-    'jade',
-    'sass',
-    'coffee',
-    'images',
-    'serve'
-  ]
+gulp.task 'default', [
+  'vendor',
+  'jade',
+  'sass',
+  'coffee',
+  'images',
+  'api',
+  'serve'
+]
 
-gulp.task 'deploy', [
+# Karma TDD
+gulp.task 'tdd', [
+  'default'
+  'test'
+]
+
+gulp.task 'heroku:production', [
   'vendor',
   'jade',
   'sassProduction',
   'coffeeProduction',
-  'imagesProduction'
+  'imagesProduction',
+  'api',
+  'serve'
 ]
