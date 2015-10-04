@@ -33,6 +33,7 @@
   "dependencies": {
     "bcrypt": "^0.8.3",
     "body-parser": "^1.12.3",
+    "bower": "^1.5.3",
     "browser-sync": "^2.6.9",
     "coffee-script": "^1.9.2",
     "del": "^1.1.1",
