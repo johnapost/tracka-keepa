@@ -1,0 +1,14 @@
+.container(posts)
+  h1 Recent Posts
+
+  form
+    .form-group
+      .input-group
+        input.form-control(ng-model='postBody' autofocus)
+        span.input-group-btn
+          button.btn.btn-default(ng-click='addPost()') Add Post
+
+  ul.list-group
+    li.list-group-item(ng-repeat='post in posts')
+      strong {{::post._user.username}}
+      span  {{::post.body}}

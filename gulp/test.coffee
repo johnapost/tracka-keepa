@@ -1,19 +1,10 @@
 gulp = require 'gulp'
-protractor = require('gulp-protractor').protractor
+karma = require('karma').server
+config = require './config.coffee'
 
-errorHandler = (error) ->
-  console.log error.toString()
-  this.emit 'end'
-
-gulp.task 'protractor', [
-    'vendor',
-    'jade',
-    'sass',
-    'coffee',
-    'images'
-  ], ->
-  gulp.src 'features/*.coffee'
-    .pipe protractor configFile: 'test.js'
-    .on 'error', errorHandler
+gulp.task 'test', (done) ->
+  karma.start {
+    configFile: "#{__dirname}/../tests.js"
+  }, done()
 
 module.exports = gulp

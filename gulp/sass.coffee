@@ -4,27 +4,33 @@ newer = require 'gulp-newer'
 sourcemaps = require 'gulp-sourcemaps'
 sass = require 'gulp-sass'
 prefix = require 'gulp-autoprefixer'
-minifycss = require 'gulp-minify-css'
+csso = require 'gulp-csso'
 chmod = require 'gulp-chmod'
 filter = require 'gulp-filter'
 browserSync = require 'browser-sync'
 config = require './config.coffee'
+plumber = require 'gulp-plumber'
+notify = require 'gulp-notify'
 
-errorHandler = (error) ->
+errorAlert = (error) ->
+  notify.onError(
+    title: 'SASS Error'
+    message: 'Check your terminal!'
+  )(error)
   console.log error.toString()
   this.emit 'end'
 
 gulp.task 'sass', ->
   gulp.src 'src/app.scss'
+    .pipe plumber errorHandler: errorAlert
     .pipe newer "#{config.path}/styles/app.css"
     .pipe sourcemaps.init()
 
     .pipe sass(style: 'expanded')
-    .on 'error', errorHandler
     .pipe prefix(browsers: ['> 1%', 'last 2 versions'])
-    .pipe minifycss()
+    .pipe csso()
     .pipe rename('app.css')
-    .pipe chmod(755)
+    .pipe chmod 755
 
     .pipe sourcemaps.write()
     .pipe gulp.dest("#{config.path}/styles")
@@ -33,12 +39,13 @@ gulp.task 'sass', ->
 
 gulp.task 'sassProduction', ->
   gulp.src 'src/app.scss'
+    .pipe plumber errorHandler: errorAlert
+
     .pipe sass(style: 'expanded')
-    .on 'error', errorHandler
     .pipe prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'])
-    .pipe minifycss()
+    .pipe csso()
     .pipe rename('app.css')
-    .pipe chmod(755)
+    .pipe chmod 755
 
     .pipe gulp.dest("#{config.path}/styles")
     .pipe filter('**/*.css')

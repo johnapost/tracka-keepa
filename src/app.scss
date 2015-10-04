@@ -1,31 +1,7 @@
-@import 'mixins';
-
-// Components
-@import 'components/authCard/authCard.scss';
-@import 'components/unauth/unauth.scss';
-
-// ngMaterial Overrides
-.md-tabs-content .md-tab-content {
-  height: auto;
+input {
+  margin-bottom: 10px;
 }
 
-md-card {
-  width: 100%;
-
-  @include gt-sm {
-    width: 80%;
-  }
-
-  @include gt-md {
-    width: 40%;
-  }
-}
-
-.md-button {
-  padding: {
-    top: 10px;
-    right: 15px;
-    bottom: 10px;
-    left: 15px;
-  }
+.btn {
+  margin-bottom: 10px;
 }
