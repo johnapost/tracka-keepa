@@ -20,7 +20,7 @@ gulp.task 'serve', [
   ], ->
   browserSync
     server: {baseDir: config.path}
-    port: 8080
+    port: 4000
     open: false
     reloadOnRestart: false
     notify: false
