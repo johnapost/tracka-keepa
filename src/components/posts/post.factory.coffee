@@ -1,8 +1,9 @@
 app.factory 'Post', [
   '$http'
   '$window'
-  ($http, $window) ->
-    path = "http://localhost:3000"
+  'Utility'
+  ($http, $window, Utility) ->
+    path = Utility.apiPath()
 
     getPosts: ->
       $http.get(

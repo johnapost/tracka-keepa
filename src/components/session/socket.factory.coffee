@@ -1,8 +1,9 @@
 app.factory 'Socket', [
   'socketFactory'
   '$window'
-  (socketFactory, $window) ->
-    path = "http://localhost:3000"
+  'Utility'
+  (socketFactory, $window, Utility) ->
+    path = Utility.apiPath()
 
     socketFactory
       prefix: ''
