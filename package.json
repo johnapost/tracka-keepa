@@ -5,7 +5,7 @@
   "main": "src/app.coffee",
   "scripts": {
     "postinstall": "bower install",
-    "start": "node server/server.js > /dev/null &",
+    "start": "node server/server.js &",
     "poststart": "http-server dist -p 80 > /dev/null &",
     "test": "karma start tests.js --single-run"
   },
