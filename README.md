@@ -8,8 +8,14 @@ Tracka Keepa is a time keeping web application. Specific features will include a
 Getting Started
 ---------------
 
+Don't forget to start your mongodb server.
+
     npm install
-    gulp
+    npm start
+
+You can now visit ```http://localhost:4000``` to view the app.
+
+This leaves a node api server and a python http-server up as background processes. Kill port 4000 and port 3000, respectively, to stop those processes.
 
 Directory Structure
 -------------------
