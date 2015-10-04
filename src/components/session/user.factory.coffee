@@ -17,7 +17,7 @@ app.factory 'User', [
           username: username
           password: password
         }
-      ).then =>
+      ).success =>
         @login username, password
 
     getUser: ->
@@ -34,11 +34,12 @@ app.factory 'User', [
           username: username
           password: password
         }
-      ).then (val) =>
-        $window.localStorage.token = val.data
-        $http.defaults.headers.common['X-Auth'] = val.data
-        @getUser().success (data) ->
+      ).success (val) =>
+        $window.localStorage.token = val
+        $http.defaults.headers.common['X-Auth'] = val
+        @getUser().success ->
           $state.go 'index'
+      .error => @logout()
 
     logout: ->
       $window.localStorage.removeItem 'token'
