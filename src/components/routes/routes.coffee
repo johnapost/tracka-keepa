@@ -12,12 +12,14 @@ app.config [
           primaryContent:
             templateUrl: 'posts.html'
         requiresLogin: true
+
       .state 'register',
         url: '/register'
         views:
           primaryContent:
             templateUrl: 'register.html'
         requiresLogin: false
+
       .state 'login',
         url: '/login'
         views:
