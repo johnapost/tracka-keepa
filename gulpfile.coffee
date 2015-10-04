@@ -51,5 +51,4 @@ gulp.task 'deploy', [
   'sassProduction',
   'coffeeProduction',
   'imagesProduction',
-  'api'
 ]
