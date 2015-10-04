@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "gulp del && gulp deploy && node server/server.js &",
-    "poststart": "http-server dist"
+    "poststart": "http-server dist",
+    "test": "karma start tests.js --single-run"
   },
   "repository": {
     "type": "git",

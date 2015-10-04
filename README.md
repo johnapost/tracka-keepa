@@ -9,7 +9,7 @@ Getting Started
 ---------------
 
     npm install
-    gulp
+    npm start
 
 Directory Structure
 -------------------
