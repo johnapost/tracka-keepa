@@ -50,5 +50,5 @@ gulp.task 'deploy', [
   'jade',
   'sassProduction',
   'coffeeProduction',
-  'imagesProduction'
+  'imagesProduction',
 ]

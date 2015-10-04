@@ -1,2 +1,1 @@
-# Save secret in ENV
-module.exports = secret: 'supersecretkey'
+module.exports = secret: process.env.JWT_SECRET

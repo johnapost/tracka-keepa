@@ -4,8 +4,9 @@ app.factory 'User', [
   '$window'
   '$state'
   'Socket'
-  ($http, $rootScope, $window, $state, Socket) ->
-    path = $window.location.origin.replace ':4000', ':3000'
+  'Utility'
+  ($http, $rootScope, $window, $state, Socket, Utility) ->
+    path = Utility.apiPath()
 
     currentUser: ''
 
