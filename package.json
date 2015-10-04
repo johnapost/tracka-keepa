@@ -5,9 +5,8 @@
   "main": "src/app.coffee",
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "gulp del && gulp deploy",
     "start": "node server/server.js > /dev/null &",
-    "poststart": "http-server dist -p 4000 > /dev/null &",
+    "poststart": "http-server dist -p 80 > /dev/null &",
     "test": "karma start tests.js --single-run"
   },
   "repository": {
