@@ -1,6 +1,11 @@
 mongoose = require 'mongoose'
 
-mongoose.connect 'mongodb://localhost/trackakeepa', ->
-  console.log 'mongodb connected'
+switch process.env.ENVIRONMENT
+  when 'DEVELOPMENT'
+    mongoose.connect 'mongodb://localhost/trackakeepa', ->
+      console.log 'mongodb connected'
+  when 'STAGING'
+    mongoose.connect process.env.MONGOLAB_URI, ->
+      console.log 'mongolab connected'
 
 module.exports = mongoose

@@ -45,10 +45,12 @@ gulp.task 'tdd', [
   'test'
 ]
 
-gulp.task 'deploy', [
+gulp.task 'heroku:production', [
   'vendor',
   'jade',
   'sassProduction',
   'coffeeProduction',
-  'imagesProduction'
+  'imagesProduction',
+  'api',
+  'serve'
 ]
