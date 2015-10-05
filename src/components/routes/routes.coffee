@@ -10,7 +10,7 @@ app.config [
         url: '/'
         views:
           primaryContent:
-            templateUrl: 'posts.html'
+            templateUrl: 'timeLogs.html'
         requiresLogin: true
 
       .state 'register',
