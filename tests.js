@@ -11,6 +11,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      'bower_components/moment/min/moment.min.js',
       'bower_components/angular-socket-io/socket.min.js',
       'bower_components/velocity/velocity.min.js',
       'bower_components/velocity/velocity.ui.min.js',
