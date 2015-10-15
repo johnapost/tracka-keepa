@@ -9,21 +9,17 @@ app.directive 'timeLogs', [
 
       # Initial retrieval of logs
       scope.initialize = ->
-        scope.logs = TimeLog.getLogs User.currentUser._id
+        TimeLog.getLogs().success (data) -> scope.logs = data
 
       # Start running a log
       scope.startLog = ->
-        input =
-          userId: User.currentUser._id
-          startTime: moment().toISOString()
+        input = startTime: moment().toISOString()
 
         TimeLog.startLog input
 
       # Stop the running log
       scope.stopLog = ->
-        input =
-          userId: User.currentUser._id
-          stopTime: moment().toISOString()
+        input = stopTime: moment().toISOString()
 
         TimeLog.stopLog input
 

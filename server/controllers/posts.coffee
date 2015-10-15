@@ -2,7 +2,7 @@ Post = require '../models/post'
 User = require '../models/user'
 router = require('express').Router()
 
-router.get '/', (req, res) ->
+router.get '/', (req, res, next) ->
 
   # Only authenticated users can use this route
   return res.sendStatus 401 unless req.headers['x-auth']

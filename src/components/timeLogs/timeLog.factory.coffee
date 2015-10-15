@@ -4,10 +4,20 @@ app.factory 'TimeLog', [
   ($http, Utility) ->
     path = Utility.apiPath()
 
-    getLogs: (data) ->
+    getLogs: ->
       $http.get(
-        "#{path}/api/timeLogs/logs"
-        data
+        "#{path}/api/timeLogs"
+        cache: true
+        transformResponse: (data) ->
+          data = JSON.parse data unless angular.isObject data
+
+          for log in data
+            log.startTime = moment(log.startTime).format 'h:mm:ss a - MMM D, YYYY'
+
+            if log.stopTime
+              log.stopTime = moment(log.stopTime).format 'h:mm:ss a - MMM D, YYYY'
+
+          data
       )
 
     # Post to service to start running a log

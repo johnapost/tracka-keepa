@@ -5,3 +5,8 @@
     .form-group
       .input-group
         button.btn.btn-default(ng-click='startLog()') Log
+        button.btn.btn-default(ng-click='stopLog()') Stop Log
+
+  ul
+    li(ng-repeat='log in logs')
+      | {{log.startTime}} | {{log.stopTime}}

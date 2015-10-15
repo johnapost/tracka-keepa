@@ -31,35 +31,29 @@ describe 'timeLogs directive', ->
 
   describe 'functions:', ->
     it 'initialize get the initial set of logs', ->
-      spyOn __TimeLog__, 'getLogs'
-      userId = faker.internet.userName()
-      __User__.currentUser = _id: userId
+      spyOn(__TimeLog__, 'getLogs').and.callThrough()
 
       element.scope().initialize()
 
-      expect __TimeLog__.getLogs
-        .toHaveBeenCalledWith userId
+      expect __TimeLog__.getLogs.calls.count()
+        .toEqual 1
 
     it 'startLog should start running a log', ->
       spyOn __TimeLog__, 'startLog'
-      userId = faker.internet.userName()
       isoString = faker.date.recent()
-      __User__.currentUser = _id: userId
       window.moment = -> toISOString: -> isoString
 
       element.scope().startLog()
 
       expect __TimeLog__.startLog
-        .toHaveBeenCalledWith userId: userId, startTime: isoString
+        .toHaveBeenCalledWith startTime: isoString
 
     it 'stopLog should stop the running log', ->
       spyOn __TimeLog__, 'stopLog'
-      userId = faker.internet.userName()
       isoString = faker.date.recent()
-      __User__.currentUser = _id: userId
       window.moment = -> toISOString: -> isoString
 
       element.scope().stopLog()
 
       expect __TimeLog__.stopLog
-        .toHaveBeenCalledWith userId: userId, stopTime: isoString
+        .toHaveBeenCalledWith stopTime: isoString

@@ -12,7 +12,7 @@ describe 'TimeLog factory', ->
   describe 'functions', ->
     it 'getLogs should get all logs that belong to a user', ->
       spyOn(__TimeLog__, 'getLogs').and.callThrough()
-      httpBackend.when 'GET', "http://localhost:3000/api/timeLogs/logs"
+      httpBackend.when 'GET', "http://localhost:3000/api/timeLogs"
         .respond 200
 
       __TimeLog__.getLogs()
