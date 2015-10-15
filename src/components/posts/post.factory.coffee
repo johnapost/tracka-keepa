@@ -1,8 +1,7 @@
 app.factory 'Post', [
   '$http'
-  '$window'
   'Utility'
-  ($http, $window, Utility) ->
+  ($http, Utility) ->
     path = Utility.apiPath()
 
     getPosts: ->
