@@ -4,15 +4,17 @@ app.factory 'TimeLog', [
   ($http, Utility) ->
     path = Utility.apiPath()
 
-    # startLog: (data) ->
-    #   $http.post(
-    #     "#{path}/api/timeLogs"
-    #     data
-    #   )
+    # Post to service to start running a log
+    startLog: (data) ->
+      $http.post(
+        "#{path}/api/timeLogs/start"
+        data
+      )
 
-    # stopLog: (data) ->
-    #   $http.post(
-    #     "#{path}/api/timeLogs"
-    #     data
-    #   )
+    # Post to service to stop the running log
+    stopLog: (data) ->
+      $http.post(
+        "#{path}/api/timeLogs/stop"
+        data
+      )
 ]
