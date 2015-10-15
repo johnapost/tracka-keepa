@@ -5,9 +5,11 @@ app.directive 'timeLogs', [
   (TimeLog, User, $timeout) ->
     restrict: 'A'
     link: (scope, element, attrs) ->
+      scope.logs = Array()
 
       # Initial retrieval of logs
       scope.initialize = ->
+        scope.logs = TimeLog.getLogs User.currentUser._id
 
       # Start running a log
       scope.startLog = ->

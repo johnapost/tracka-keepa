@@ -17,6 +17,10 @@ describe 'timeLogs directive', ->
           angular.element '<div time-logs></div>'
         )(scope)
 
+  it 'should have an empty list of logs', ->
+    expect element.scope().logs
+      .toEqual []
+
   it 'should initialize', ->
     spyOn element.scope(), 'initialize'
 
@@ -27,6 +31,14 @@ describe 'timeLogs directive', ->
 
   describe 'functions:', ->
     it 'initialize get the initial set of logs', ->
+      spyOn __TimeLog__, 'getLogs'
+      userId = faker.internet.userName()
+      __User__.currentUser = _id: userId
+
+      element.scope().initialize()
+
+      expect __TimeLog__.getLogs
+        .toHaveBeenCalledWith userId
 
     it 'startLog should start running a log', ->
       spyOn __TimeLog__, 'startLog'

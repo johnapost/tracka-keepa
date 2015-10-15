@@ -10,6 +10,17 @@ describe 'TimeLog factory', ->
       httpBackend = $httpBackend
 
   describe 'functions', ->
+    it 'getLogs should get all logs that belong to a user', ->
+      spyOn(__TimeLog__, 'getLogs').and.callThrough()
+      httpBackend.when 'GET', "http://localhost:3000/api/timeLogs/logs"
+        .respond 200
+
+      __TimeLog__.getLogs()
+      httpBackend.flush()
+
+      expect __TimeLog__.getLogs.calls.mostRecent().returnValue['$$state'].status
+        .toEqual 1
+
     it 'startLog should post to service to start running a log', ->
       spyOn(__TimeLog__, 'startLog').and.callThrough()
       httpBackend.when 'POST', "http://localhost:3000/api/timeLogs/start"
