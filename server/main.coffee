@@ -21,7 +21,6 @@ app.use require './auth'
 # Routes
 app.use '/api/sessions', require './controllers/sessions'
 app.use '/api/users', require './controllers/users'
-app.use '/api/posts', require './controllers/posts'
 app.use '/api/timeLogs', require './controllers/timeLogs'
 
 # Start API server

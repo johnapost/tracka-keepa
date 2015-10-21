@@ -31,12 +31,14 @@ describe 'timeLogs directive', ->
 
   describe 'functions:', ->
     it 'initialize get the initial set of logs', ->
-      spyOn(__TimeLog__, 'getLogs').and.callThrough()
+      data = faker.lorem.words(1)[0]
+      spyOn(__TimeLog__, 'getLogs').and.callFake ->
+        success: (cb) -> cb({data})
 
       element.scope().initialize()
 
-      expect __TimeLog__.getLogs.calls.count()
-        .toEqual 1
+      expect element.scope().logs
+        .toEqual data: data
 
     it 'startLog should start running a log', ->
       spyOn __TimeLog__, 'startLog'
