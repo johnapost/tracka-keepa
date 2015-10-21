@@ -18,10 +18,28 @@ describe 'Session directive', ->
   describe 'functions:', ->
     it 'login should call User login', ->
       spyOn __User__, 'login'
-      username = faker.hacker.noun()
-      password = faker.hacker.noun()
+      username = faker.internet.userName()
+      password = faker.internet.password()
 
       element.scope().login username, password
 
       expect __User__.login
+        .toHaveBeenCalledWith username, password
+
+    it 'logout should call logout', ->
+      spyOn __User__, 'logout'
+
+      element.scope().logout()
+
+      expect __User__.logout.calls.count()
+        .toEqual 1
+
+    it 'register should create a user', ->
+      spyOn __User__, 'createUser'
+      username = faker.internet.userName()
+      password = faker.internet.password()
+
+      element.scope().register username, password
+
+      expect __User__.createUser
         .toHaveBeenCalledWith username, password
