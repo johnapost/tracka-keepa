@@ -44,8 +44,9 @@ router.post '/stop', (req, res, next) ->
     .exec (err, timeLogs) ->
       return next err if err
       timeLog = timeLogs[0]
-      timeLog.stopTime = req.body.stopTime
-      timeLog.save (err, timeLog) ->
-        res.status(200).json timeLog
+      if timeLog
+        timeLog.stopTime = req.body.stopTime
+        timeLog.save (err, timeLog) ->
+          res.status(200).json timeLog
 
 module.exports = router
