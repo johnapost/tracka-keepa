@@ -12,10 +12,12 @@ app.factory 'TimeLog', [
           data = JSON.parse data unless angular.isObject data
 
           for log in data
-            log.startTime = moment(log.startTime).format 'h:mm:ss a - MMM D, YYYY'
+            log.startTime =
+              moment(log.startTime).format 'h:mm:ss a - MMM D, YYYY'
 
             if log.stopTime
-              log.stopTime = moment(log.stopTime).format 'h:mm:ss a - MMM D, YYYY'
+              log.stopTime =
+                moment(log.stopTime).format 'h:mm:ss a - MMM D, YYYY'
 
           data
       )

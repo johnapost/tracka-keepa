@@ -14,8 +14,8 @@ describe 'timeLogs directive', ->
       timeout = $timeout
 
       element = $compile(
-          angular.element '<div time-logs></div>'
-        )(scope)
+        angular.element '<div time-logs></div>'
+      )(scope)
 
   it 'should have an empty list of logs', ->
     expect element.scope().logs
