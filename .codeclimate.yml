@@ -30,8 +30,6 @@ engines:
 
 ratings:
   paths:
-  - src/**
-  - server/**
   - "**.coffee"
   - "**.scss"
 
