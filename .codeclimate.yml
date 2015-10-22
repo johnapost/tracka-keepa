@@ -15,6 +15,7 @@
 engines:
   coffeelint:
     enabled: true
+    config: coffeelint.json
   scsslint:
     enabled: true
 
