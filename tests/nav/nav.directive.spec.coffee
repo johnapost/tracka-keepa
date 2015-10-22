@@ -12,8 +12,8 @@ describe 'Nav directive', ->
       __User__ = User
 
       element = $compile(
-          angular.element "<div nav></div>"
-        )(scope)
+        angular.element "<div nav></div>"
+      )(scope)
 
   it 'should have a null current user', ->
     expect element.scope().currentUser
