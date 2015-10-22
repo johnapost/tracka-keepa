@@ -1,6 +1,6 @@
 {
   "name": "tracka-keepa",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Mean Baby",
   "main": "src/app.coffee",
   "scripts": {
