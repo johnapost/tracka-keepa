@@ -13,7 +13,10 @@ describe 'TimeLog factory', ->
     it 'getLogs should get all logs that belong to a user', ->
       spyOn(__TimeLog__, 'getLogs').and.callThrough()
       httpBackend.when 'GET', "http://localhost:3000/api/timeLogs"
-        .respond 200
+        .respond [
+          {startTime: moment(), stopTime: moment()},
+          {startTime: moment(), stopTime: moment()}
+        ]
 
       __TimeLog__.getLogs()
       httpBackend.flush()
