@@ -8,7 +8,7 @@ gulp.task 'api', ->
   nodemon
     script: 'server/server.js'
     ext: 'coffee'
-    ignore: ['src/*', 'gulp/*', 'gulpfile.coffee']
+    ignore: ['src/*', 'gulp/*', 'gulpfile.coffee', 'tests/*']
 
 gulp.task 'serve', [
     'vendor',

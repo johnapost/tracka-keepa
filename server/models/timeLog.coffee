@@ -5,13 +5,12 @@ schema = db.Schema {
     type: db.Schema.Types.ObjectId
     ref: 'User'
     required: true
-  body:
-    type: String
-    required: true
-  date:
+  startTime:
     type: Date
-    required: true
-    default: Date.now
+    required: false
+  stopTime:
+    type: Date
+    required: false
 }
 
-module.exports = db.model 'Post', schema
+module.exports = db.model 'TimeLog', schema

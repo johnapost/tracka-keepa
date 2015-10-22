@@ -13,6 +13,7 @@ gulp.task 'vendor', ->
     'bower_components/socket.io.client/dist/socket.io-1.3.5.js'
     'bower_components/angular/angular.min.js'
     'bower_components/angular-ui-router/release/angular-ui-router.min.js'
+    'bower_components/moment/min/moment.min.js'
     'bower_components/angular-socket-io/socket.min.js'
     'bower_components/velocity/velocity.min.js'
     'bower_components/velocity/velocity.ui.min.js'

@@ -1,4 +1,6 @@
-[ ![Codeship Status for johnapost/tracka-keepa](https://codeship.com/projects/4c85bbe0-9151-0132-34f5-6e434ff849c7/status?branch=master)](https://codeship.com/projects/61691)
+[![Codeship Status for johnapost/tracka-keepa](https://codeship.com/projects/4c85bbe0-9151-0132-34f5-6e434ff849c7/status?branch=master)](https://codeship.com/projects/61691)
+[![Code Climate](https://codeclimate.com/github/johnapost/tracka-keepa/badges/gpa.svg)](https://codeclimate.com/github/johnapost/tracka-keepa)
+[![Test Coverage](https://codeclimate.com/github/johnapost/tracka-keepa/badges/coverage.svg)](https://codeclimate.com/github/johnapost/tracka-keepa/coverage)
 
 What is Tracka Keepa?
 =====================
