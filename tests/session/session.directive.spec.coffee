@@ -12,8 +12,8 @@ describe 'Session directive', ->
       __User__ = User
 
       element = $compile(
-          angular.element '<div session></div>'
-        )(scope)
+        angular.element '<div session></div>'
+      )(scope)
 
   describe 'functions:', ->
     it 'login should call User login', ->

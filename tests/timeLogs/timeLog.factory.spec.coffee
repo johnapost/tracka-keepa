@@ -18,8 +18,9 @@ describe 'TimeLog factory', ->
       __TimeLog__.getLogs()
       httpBackend.flush()
 
-      expect __TimeLog__.getLogs.calls.mostRecent().returnValue['$$state'].status
-        .toEqual 1
+      expect(
+        __TimeLog__.getLogs.calls.mostRecent().returnValue['$$state'].status
+      ).toEqual 1
 
     it 'startLog should post to service to start running a log', ->
       spyOn(__TimeLog__, 'startLog').and.callThrough()
@@ -29,8 +30,9 @@ describe 'TimeLog factory', ->
       __TimeLog__.startLog()
       httpBackend.flush()
 
-      expect __TimeLog__.startLog.calls.mostRecent().returnValue['$$state'].status
-        .toEqual 1
+      expect(
+        __TimeLog__.startLog.calls.mostRecent().returnValue['$$state'].status
+      ).toEqual 1
 
     it 'stopLog should post to service to stop running the log', ->
       spyOn(__TimeLog__, 'stopLog').and.callThrough()
@@ -40,8 +42,9 @@ describe 'TimeLog factory', ->
       __TimeLog__.stopLog()
       httpBackend.flush()
 
-      expect __TimeLog__.stopLog.calls.mostRecent().returnValue['$$state'].status
-        .toEqual 1
+      expect(
+        __TimeLog__.stopLog.calls.mostRecent().returnValue['$$state'].status
+      ).toEqual 1
 
   afterEach ->
     httpBackend.verifyNoOutstandingExpectation()

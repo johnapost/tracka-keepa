@@ -42,7 +42,9 @@ gulp.task 'sassProduction', ->
     .pipe plumber errorHandler: errorAlert
 
     .pipe sass(style: 'expanded')
-    .pipe prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'])
+    .pipe prefix(
+      browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+    )
     .pipe csso()
     .pipe rename('app.css')
     .pipe chmod 755
